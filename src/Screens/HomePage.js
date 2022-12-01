@@ -14,7 +14,7 @@ class HomePage extends Component {
   }
   render() {
     const { show } = this.props
-    
+
     return (
       <SafeAreaView style={styles.safeView}>
         <View style={styles.work}>
@@ -23,16 +23,18 @@ class HomePage extends Component {
           <View style={styles.workText}>
             <Text style={styles.boldText}>Work</Text>
             <Text style={styles.address}>To The New,2nd Floor,NSL Building,NSL Techzo...</Text>
+            <Image style={styles.down}
+              source={require('../../Images/icons8-more-than-49.png')} />
           </View>
-         <View style={styles.language}>
-         <Image style={styles.langBar}
-         source={require('../../Images/languageBar.png')}/>
-        <Image style={styles.profile}
-         source={require('../../Images/ProfilePic.jpg')}/>
-         </View>
+          <View style={styles.language}>
+            <Image style={styles.langBar}
+              source={require('../../Images/languageBar.png')} />
+            <Image style={styles.profile}
+              source={require('../../Images/ProfilePic.jpg')} />
+          </View>
         </View>
 
-        
+
 
         <View style={styles.inputView}>
           <Image style={styles.search}
@@ -47,33 +49,33 @@ class HomePage extends Component {
           </View>
         </View>
         <ScrollView style={styles.scrol}>
-        <View style={styles.buttons}>
-          <TouchableOpacity style={styles.types}>
-            <Image style={styles.slider}
-              source={require('../../Images/icons8-slider-24.png')} />
-            <Text style={styles.buttonText}>Sort</Text>
-            <Image style={styles.sort}
-              source={require('../../Images/icons8-sort-down-30.png')} />
-          </TouchableOpacity>
+          <View style={styles.buttons}>
+            <TouchableOpacity style={styles.types}>
+              <Image style={styles.slider}
+                source={require('../../Images/icons8-slider-24.png')} />
+              <Text style={styles.buttonText}>Sort</Text>
+              <Image style={styles.sort}
+                source={require('../../Images/icons8-sort-down-30.png')} />
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.Pro}>
-            <Text style={styles.buttonTextOthers}>Pro</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.Pro}>
+              <Text style={styles.buttonTextOthers}>Pro</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.typesOther}>
-            <Text style={styles.buttonTextOthers}>Fast Delivery</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.typesOther}>
+              <Text style={styles.buttonTextOthers}>Fast Delivery</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.typesOther}>
-            <Text style={styles.buttonTextOthers}>Great Offers</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.typesOther}>
+              <Text style={styles.buttonTextOthers}>Great Offers</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.typesOther}>
-            <Text style={styles.buttonTextOthers}>Rating 4.0+</Text>
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity style={styles.typesOther}>
+              <Text style={styles.buttonTextOthers}>Rating 4.0+</Text>
+            </TouchableOpacity>
+          </View>
 
-        
+
           <View style={styles.offers}>
             <Image style={styles.imageOne}
               source={require('../../Images/offers.jpeg')} />
@@ -86,13 +88,13 @@ class HomePage extends Component {
           <Text style={styles.restText}>Based on your Orders </Text>
 
 
-          
+
 
           <FlatList
             data={show.data}
             numColumns={2}
             renderItem={({ item }) => {
-              const {description} = item
+              const { description } = item
               return (
                 <View style={styles.flatView}>
                   <TouchableOpacity style={styles.detail}
@@ -108,7 +110,7 @@ class HomePage extends Component {
                         <Text style={styles.imgTextTwo}>{item.deliveryduration}</Text>
                       </View>
 
-                      <Text style={[item.offers ? styles.imgTextThree : styles.description]}>{item.offers || description.substr(0,22)}...</Text>
+                      <Text style={[item.offers ? styles.imgTextThree : styles.description]}>{item.offers || description.substr(0, 22)}...</Text>
                     </View>
                   </TouchableOpacity>
                 </View>
@@ -169,21 +171,21 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: 'black'
   },
-  language:{
-    flexDirection:'row',
-    justifyContent:'space-evenly',
-    width:120,
-    
+  language: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: 120,
+
   },
-  
-  langBar:{
-    height:35,
-    width:40,
+
+  langBar: {
+    height: 35,
+    width: 40,
   },
-  profile:{
-    height:32,
-    width:30,
-    borderRadius:40
+  profile: {
+    height: 32,
+    width: 30,
+    borderRadius: 40
   },
 
   work: {
@@ -195,8 +197,15 @@ const styles = StyleSheet.create({
   location: {
     height: 25,
     width: 25,
-    marginTop:5,
+    marginTop: 5,
     marginLeft: 5,
+  },
+  down:{
+    position:'absolute',
+    height:6,
+    width:20,
+    left:40,
+    top:7
   },
   inputView: {
     marginTop: 15,
@@ -211,7 +220,7 @@ const styles = StyleSheet.create({
     height: 28,
     width: 28,
     marginTop: 10,
-     marginLeft:5,
+    marginLeft: 5,
   },
   place: {
     fontSize: 15,
@@ -221,19 +230,19 @@ const styles = StyleSheet.create({
     width: 270
   },
   voice: {
-    width:55,
-    height:40,
+    width: 55,
+    height: 40,
     borderColor: 'gainsboro',
-    borderLeftWidth:0.4,
-    marginLeft:16,
-    marginTop:5,
-    paddingVertical:6,
-    paddingHorizontal:10
+    borderLeftWidth: 0.4,
+    marginLeft: 16,
+    marginTop: 5,
+    paddingVertical: 6,
+    paddingHorizontal: 10
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginTop:5,
+    marginTop: 5,
   },
   slider: {
     height: 22,
@@ -252,7 +261,7 @@ const styles = StyleSheet.create({
   Pro: {
     backgroundColor: 'white',
     paddingHorizontal: 6,
-    paddingVertical:8,
+    paddingVertical: 8,
     borderRadius: 7,
     borderColor: 'grey',
     borderWidth: 0.3,
@@ -265,8 +274,8 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     width: 82,
     height: 30,
-    paddingHorizontal:5,
-    paddingVertical:8
+    paddingHorizontal: 5,
+    paddingVertical: 8
   },
   buttonTextOthers: {
     fontSize: 11,
@@ -274,7 +283,7 @@ const styles = StyleSheet.create({
     fontWeight: '600'
   },
   buttonText: {
-    marginTop:7,
+    marginTop: 7,
     color: 'bold',
     fontWeight: '600',
     fontSize: 12
@@ -282,7 +291,7 @@ const styles = StyleSheet.create({
   offers: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginTop:15
+    marginTop: 15
   },
   imageOne: {
     height: 120,
@@ -292,10 +301,11 @@ const styles = StyleSheet.create({
   sort: {
     height: 14,
     width: 14,
-    marginTop:7,
+    marginTop: 7,
   },
   scrol: {
-    marginTop:15,
+    marginTop:10,
+   
   },
   restaurants: {
     flexDirection: 'column',
@@ -341,28 +351,27 @@ const styles = StyleSheet.create({
   },
   detail: {
     flexDirection: 'row',
-    // marginTop: 20,
-    // borderWidth: 1,
+
 
   },
   img: {
     height: 54,
     width: 54,
-    // marginLeft: 13,
+
     borderRadius: 8,
   },
   imgDes: {
     marginLeft: 5,
   },
-  duration:{
-    flexDirection:'row',
-   // backgroundColor:'yellow',
-   
+  duration: {
+    flexDirection: 'row',
+
+
   },
-  watch:{
-    height:17,
-    width:16,
-    marginTop:3
+  watch: {
+    height: 17,
+    width: 16,
+    marginTop: 3
   },
   imgTextOne: {
     fontSize: 12,
@@ -374,7 +383,7 @@ const styles = StyleSheet.create({
     marginTop: 4
   },
   imgTextThree: {
-    color: 'blue',
+    color: ('rgb(62,123,233)'),
     fontSize: 10,
     marginTop: 2
   },
@@ -407,7 +416,7 @@ const styles = StyleSheet.create({
   },
   rate: {
     fontSize: 11,
-    // marginTop:3,
+     marginTop:3,
     fontWeight: 'bold',
     color: 'grey'
   },

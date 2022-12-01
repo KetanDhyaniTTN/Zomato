@@ -63,7 +63,8 @@ const ShowPage = ({ route, navigation }) => {
                             </TouchableOpacity>
                         </View>
                         <ScrollView style={styles.AddScrol}
-                            horizontal={true}>
+                            horizontal={true}
+                                    >
                             <Image style={styles.OfferRed}
                                 source={require('../../Images/RedAdd.jpeg')} />
 
@@ -73,12 +74,6 @@ const ShowPage = ({ route, navigation }) => {
 
                     </View>
                 </View>
-
-
-
-
-
-
 
                 <View style={styles.buttonView}>
                     <TouchableOpacity style={styles.buttonVeg}>
@@ -114,6 +109,9 @@ const ShowPage = ({ route, navigation }) => {
                         <View style={styles.firstrow}>
                             <Image style={styles.wrap}
                                 source={{ uri: "https://b.zmtcdn.com/data/dish_photos/050/f828d299c85374c6374c676c37b21050.png?output-format=webp&fit=around|130:130&crop=130:130;*,*" }} />
+                            <Image style={styles.vegAb}
+                            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIkrKbfwN91hLB3v0sx0C8AnGer2crLMOuA&usqp=CAU' }} />
+
 
                             <View style={styles.info}>
                                 <Text style={styles.title}>2 x
@@ -126,20 +124,22 @@ const ShowPage = ({ route, navigation }) => {
                         <View style={styles.firstrow}>
                             <Image style={styles.wrap}
                                 source={{ uri: "https://b.zmtcdn.com/data/dish_photos/901/802b82218c9aef28be50dcd6d5213901.png?output-format=webp&fit=around|130:130&crop=130:130;*,*" }} />
+                             <Image style={styles.vegAb}
+                            source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
 
                             <View style={styles.info}>
                                 <Text style={styles.title}>1 x
-                                    <Text style={styles.inner}> Big Spicy Chicken Wrap</Text>
+                                    <Text style={styles.inner}> Big Spicy Paneer Wrap</Text>
                                 </Text>
                                 <Text style={styles.cheese}>Add Cheese</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={styles.moreitems}>
+                    <TouchableOpacity style={styles.moreitems}>
                         <Text style={styles.more}>+ 1 more items(s)</Text>
                         <Image style={styles.down}
                             source={require('../../Images/icons8-more-than-49.png')} />
-                    </View>
+                    </TouchableOpacity>
 
                     <View style={styles.addPrice}>
                         <Text style={styles.price}>Rs826</Text>
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
         width: "92%",
         marginLeft: 15,
         borderRadius: 20,
-        marginTop: 10
+        marginTop:5
     },
     AddressBar: {
         flexDirection: 'row'
@@ -297,12 +297,11 @@ const styles = StyleSheet.create({
         width: 230,
         marginTop: 10,
         marginLeft: 9,
-        //backgroundColor:'black'
+        
     },
 
     stopwatch: {
         flexDirection: 'row',
-        // backgroundColor: 'red',
         padding: 2,
         width: 75
     },
@@ -331,7 +330,7 @@ const styles = StyleSheet.create({
         marginLeft: 2
     },
     AddScrol: {
-        // marginTop:10,
+        
         padding: 12,
        
     },
@@ -394,8 +393,6 @@ const styles = StyleSheet.create({
     },
     buttonVeg: {
         flexDirection: 'row',
-        // width: 55,
-        // height: 28,
         paddingVertical: 6,
         paddingHorizontal: 4,
         backgroundColor: 'white',
@@ -405,8 +402,6 @@ const styles = StyleSheet.create({
     },
     buttonNonveg: {
         flexDirection: 'row',
-        // width: 85,
-        // height: 28,
         paddingHorizontal: 4,
         paddingVertical: 6,
         backgroundColor: 'white',
@@ -416,8 +411,6 @@ const styles = StyleSheet.create({
     },
     buttons: {
         flexDirection: 'row',
-        // width:85,
-        // height: 28,
         paddingVertical: 6,
         paddingHorizontal: 8,
         backgroundColor: 'white',
@@ -427,8 +420,6 @@ const styles = StyleSheet.create({
     },
     buttonBest: {
         flexDirection: 'row',
-        // width:76,
-        // height: 28,
         paddingVertical: 6,
         paddingHorizontal: 8,
         backgroundColor: 'white',
@@ -438,7 +429,6 @@ const styles = StyleSheet.create({
     },
     buttonLunch: {
         backgroundColor: "white",
-        // width:50,
         padding: 6,
         borderRadius: 7,
         borderColor: 'grey',
@@ -458,7 +448,7 @@ const styles = StyleSheet.create({
     veg: {
         height: 16,
         width: 16,
-        // marginLeft:3
+        borderRadius:4
     },
     itemView: {
         backgroundColor: 'white',
@@ -486,6 +476,13 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10
     },
+    vegAb:{
+        position:'absolute',
+        height:11,
+        width:11,
+        left:35,
+        top:5
+    },
     firstrow: {
         flexDirection: 'row',
         marginLeft: 10,
@@ -498,16 +495,17 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'grey',
-
+        fontSize:14
     },
     inner: {
         color: 'black',
         marginLeft: 10,
-        fontSize: 12,
+        fontSize: 13,
         fontWeight: '600'
     },
     cheese: {
         color: 'grey',
+        fontWeight:'600',
         fontSize: 11,
         marginTop: 3
     },
@@ -542,17 +540,17 @@ const styles = StyleSheet.create({
     add: {
         flexDirection: 'row',
         backgroundColor: ('rgb(253,246,247)'),
-        paddingVertical: 8,
-        paddingHorizontal: 32,
-        height: 40,
-        width: 110,
+        paddingVertical: 6,
+        paddingHorizontal:20,
+        height: 35,
+        width: 90,
         borderColor: 'red',
         borderWidth: 1,
         borderRadius: 10,
-        marginTop:16,
+        marginTop:21,
     },
     addText: {
-        fontSize: 18,
+        fontSize: 16,
         color: ('rgb(223,102,110)'),
         fontWeight: 'bold',
 
@@ -560,7 +558,7 @@ const styles = StyleSheet.create({
     plus: {
         height: 9,
         width: 20,
-        marginLeft: 18
+        marginLeft: 11
     },
     previously: {
         height: '40%',
@@ -593,9 +591,7 @@ const styles = StyleSheet.create({
     },
     first: {
         flexDirection: 'row',
-        //marginLeft: 5,
         marginTop: 30,
-        // backgroundColor:'yellow',
         width: 115,
         justifyContent: 'space-between'
     },
@@ -625,7 +621,8 @@ const styles = StyleSheet.create({
     stars: {
         height: 25,
         width: 80,
-        borderColor: 'yellow',
+        borderColor: ('rgb(251,234,185)'),
+        borderRadius:5,
         borderWidth: 2
     },
     second: {
@@ -647,7 +644,6 @@ const styles = StyleSheet.create({
     Description: {
         flexDirection: 'column',
         marginTop: 6,
-        //marginLeft:5,
     },
     productDetail: {
         fontSize: 12,
