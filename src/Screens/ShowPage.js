@@ -220,7 +220,8 @@ const ShowPage = ({ route, navigation }) => {
                                 <View style={styles.first}>
                                     <Image style={styles.Veg}
                                         source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
-                                    <TouchableOpacity style={styles.orange}>
+                                    <TouchableOpacity style={styles.orange}
+                                    onPress={ButtonAdd}>
                                         <Text style={styles.orangeText}>Bestseller</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -268,13 +269,6 @@ const ShowPage = ({ route, navigation }) => {
 
 
                     </View>
-                    {/* <View style={{ height: 35, backgroundColor: 'white' }} /> */}
-
-
-
-
-
-
 
                 </ScrollView>
             </View>
@@ -293,14 +287,10 @@ const styles = StyleSheet.create({
         backgroundColor: ('rgb(244,246,250)'),
         flex: 1,
         flexDirection: 'column',
-
-
     },
     top: {
         flexDirection: 'row',
         padding: 2
-
-
     },
     arrow: {
         height: 23,
@@ -383,7 +373,6 @@ const styles = StyleSheet.create({
         width: 210,
         marginTop: 10,
         marginLeft: 9,
-        // backgroundColor:'yellow'
     },
 
     stopwatch: {

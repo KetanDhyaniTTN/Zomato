@@ -6,6 +6,12 @@ import HomePage from './HomePage'
 const Tab = createBottomTabNavigator()
 
 class TabBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeBtn: 'Home'
+        };
+    }
     render() {
         return (
             
@@ -26,8 +32,11 @@ class TabBar extends Component {
                     <Tab.Screen name="Dining" component={HomePage}
                         options={{
                             headerShown: false,
+                           
                             tabBarIcon: ({ color, size }) => (
+                                <View style={this.state.activeBtn==="Red" ? styles.Dining:null}>
                                 <Image style={styles.icon} source={require('../../Images/Dining.png')} />
+                                </View>
                             )
                         }} />
 
@@ -73,7 +82,7 @@ const styles = StyleSheet.create({
         padding:8
     },
     grocery:{
-       //borderWidth:2,
+        
        flexDirection:'row',
        //paddingHorizontal:5,
        padding:4
@@ -83,7 +92,11 @@ const styles = StyleSheet.create({
         width:25,
         position:'absolute',
          left:25,
-    }
+    },
+    Dining:{
+        borderColor:'red',
+        borderTopWidth:2,
+    },
     
 })
 export default TabBar;
