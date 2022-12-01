@@ -3,6 +3,7 @@ import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, FlatList, Touch
 import { DATA } from '../Data'
 import { Variety } from '../Data'
 import { BlurView } from "@react-native-community/blur";
+
 class SecondScreen extends Component {
   render() {
     return (
@@ -11,7 +12,7 @@ class SecondScreen extends Component {
         <FlatList
           data={DATA}
           horizontal
-
+          showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => {
             return (
               <View style={styles.flatview}>
@@ -57,7 +58,7 @@ class SecondScreen extends Component {
               source={require('../../Images/icons8-star-64.png')} />
             <View style={styles.bottonDetail}>
               <Text style={styles.zaikaKing}>The Zaika King</Text>
-              <Text style={styles.rate}>How would you rate your experience</Text>
+              <Text style={styles.rate}>How would you rate your experience?</Text>
             </View>
 
             <Text style={styles.redText}>Rate</Text>
@@ -115,9 +116,9 @@ const styles = StyleSheet.create({
   },
   flatimage: {
     height: 190,
-    width: 280,
+    width: 330,
     borderRadius: 20,
-
+    
   },
   off: {
     position: 'absolute',

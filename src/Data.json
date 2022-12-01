@@ -43,6 +43,28 @@
       "Ratings":"4.5",
       "Reviews":"10.5K",
       "description":"Mithai,North Indian"
+    },
+    {
+      "title": "McDonald's",
+      "deliveryduration": "20-30 min",
+      "item": "Burger,FastFood,Beverages",
+      "Address": "Sector 135,Noida",
+      "distance": "5 km away",
+      "imageurl":"https://b.zmtcdn.com/data/pictures/7/3500247/cc05a523ff0cbf188818b5eefca01d13.jpg?output-format=webp&fit=around|771.75:416.25&crop=771.75:416.25;*,*",
+      "Ratings":"4.4",
+      "Reviews":"10.5K",
+      "description":"Burger,FastFood,Bever.."
+    },
+    {
+      "title": "Hira Sweets",
+      "deliveryduration": "30-40 min",
+      "item": "Mithai,North Indian",
+      "Address": "Sector 135,Noida",
+      "distance": "5 km away",
+      "imageurl":"https://b.zmtcdn.com/data/pictures/chains/8/2008/471c6be9e6e88d98664409959e169b13.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+      "Ratings":"4.5",
+      "Reviews":"10.5K",
+      "description":"Mithai,North Indian"
     }
   ]
 }

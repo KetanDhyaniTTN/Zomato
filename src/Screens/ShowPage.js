@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, TextInput, ScrollView } from "react-native";
 
 const ShowPage = ({ route, navigation }) => {
+
+
     const display = route.params.result
     return (
         <SafeAreaView style={styles.header}>
@@ -26,191 +28,212 @@ const ShowPage = ({ route, navigation }) => {
                         source={require('../../Images/icons8-more-24.png')} />
                 </TouchableOpacity>
             </View>
-            <ScrollView style={styles.Scrol}>
-                <View style={styles.Display}>
-                    <View style={styles.firstBox}>
-                        <Text style={styles.Title}>{display.title}</Text>
-                        <Text style={styles.course}>{display.item}</Text>
+            <View style={styles.mainView}>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                    <View style={styles.Scrol}>
+                        <View style={styles.Display}>
+                            <View style={styles.firstBox}>
+                                <Text style={styles.Title}>{display.title}</Text>
+                                <Text style={styles.course}>{display.item}</Text>
 
-                        <View style={styles.AddressBar}>
-                            <Text style={styles.adText}>{display.Address}</Text>
-                            <Image style={styles.redSort}
-                                source={require('../../Images/icons8-sort-red-24.png')} />
-                        </View>
-
-
-                        <View style={styles.fourthView}>
-                            <View style={styles.stopwatch}>
-                                <Image style={styles.watch}
-                                    source={require('../../Images/icons8-stopwatch-66.png')} />
-                                <Text style={styles.deliveryTime}>{display.deliveryduration}</Text>
-                            </View>
-                            <View style={styles.dist}>
-                                <Text style={styles.distText}>{display.distance}</Text>
-                            </View>
-                        </View>
-
-                        <View style={styles.greenButton}>
-                            <TouchableOpacity style={styles.rating}>
-                                <Text style={styles.points}>{display.Ratings}</Text>
-                                <Image style={styles.ratingStar}
-                                    source={require('../../Images/icons8-christmas-star-50.png')} />
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.reviews}>
-                                <Text style={styles.revText}>{display.Reviews}</Text>
-                                <Text style={styles.head}>Reviews</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <ScrollView style={styles.AddScrol}
-                            horizontal={true}
-                                    >
-                            <Image style={styles.OfferRed}
-                                source={require('../../Images/RedAdd.jpeg')} />
-
-                            <Image style={styles.OfferBlue}
-                                source={require('../../Images/RedAdd.jpeg')} />
-                        </ScrollView>
-
-                    </View>
-                </View>
-
-                <View style={styles.buttonView}>
-                    <TouchableOpacity style={styles.buttonVeg}>
-                        <Image style={styles.veg}
-                            source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
-                        <Text style={styles.buttonText}>Veg</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.buttonNonveg}>
-                        <Image style={styles.veg}
-                            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIkrKbfwN91hLB3v0sx0C8AnGer2crLMOuA&usqp=CAU' }} />
-                        <Text style={styles.buttonText}>Non-veg</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.buttonBest}>
-                        <Text style={styles.buttonTextOthers}>Bestseller</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.buttons}>
-                        <Text style={styles.buttonTextOthers}>Rating 4.0+</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.buttonLunch}>
-                        <Text style={styles.buttonTextOthers}>Lunch</Text>
-                    </TouchableOpacity>
-                </View>
+                                <View style={styles.AddressBar}>
+                                    <Text style={styles.adText}>{display.Address}</Text>
+                                    <Image style={styles.redSort}
+                                        source={require('../../Images/icons8-sort-red-24.png')} />
+                                </View>
 
 
-                <View style={styles.itemView}>
-                    <Text style={styles.order}>Your Previous order</Text>
+                                <View style={styles.fourthView}>
+                                    <View style={styles.stopwatch}>
+                                        <Image style={styles.watch}
+                                            source={require('../../Images/icons8-stopwatch-66.png')} />
+                                        <Text style={styles.deliveryTime}>{display.deliveryduration}</Text>
+                                    </View>
+                                    <View style={styles.dist}>
+                                        <Text style={styles.distText}>{display.distance}</Text>
+                                    </View>
+                                </View>
 
-                    <View style={styles.previousOrders}>
-                        <View style={styles.firstrow}>
-                            <Image style={styles.wrap}
-                                source={{ uri: "https://b.zmtcdn.com/data/dish_photos/050/f828d299c85374c6374c676c37b21050.png?output-format=webp&fit=around|130:130&crop=130:130;*,*" }} />
-                            <Image style={styles.vegAb}
-                            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIkrKbfwN91hLB3v0sx0C8AnGer2crLMOuA&usqp=CAU' }} />
+                                <View style={styles.greenButton}>
+                                    <TouchableOpacity style={styles.rating}>
+                                        <Text style={styles.points}>{display.Ratings}</Text>
+                                        <Image style={styles.ratingStar}
+                                            source={require('../../Images/icons8-christmas-star-50.png')} />
+                                    </TouchableOpacity>
 
+                                    <TouchableOpacity style={styles.reviews}>
+                                        <Text style={styles.revText}>{display.Reviews}</Text>
+                                        <Text style={styles.head}>Reviews</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <ScrollView style={styles.AddScrol}
+                                    horizontal={true}
+                                    showsHorizontalScrollIndicator={false} >
+                                    <Image style={styles.OfferRed}
+                                        source={require('../../Images/RedAdd.jpeg')} />
 
-                            <View style={styles.info}>
-                                <Text style={styles.title}>2 x
-                                    <Text style={styles.inner}> Big Spicy Chicken Wrap</Text>
-                                </Text>
-                                <Text style={styles.cheese}>Add Cheese</Text>
+                                    <Image style={styles.OfferBlue}
+                                        source={require('../../Images/RedAdd.jpeg')} />
+                                </ScrollView>
+
                             </View>
                         </View>
 
-                        <View style={styles.firstrow}>
-                            <Image style={styles.wrap}
-                                source={{ uri: "https://b.zmtcdn.com/data/dish_photos/901/802b82218c9aef28be50dcd6d5213901.png?output-format=webp&fit=around|130:130&crop=130:130;*,*" }} />
-                             <Image style={styles.vegAb}
-                            source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
-
-                            <View style={styles.info}>
-                                <Text style={styles.title}>1 x
-                                    <Text style={styles.inner}> Big Spicy Paneer Wrap</Text>
-                                </Text>
-                                <Text style={styles.cheese}>Add Cheese</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <TouchableOpacity style={styles.moreitems}>
-                        <Text style={styles.more}>+ 1 more items(s)</Text>
-                        <Image style={styles.down}
-                            source={require('../../Images/icons8-more-than-49.png')} />
-                    </TouchableOpacity>
-
-                    <View style={styles.addPrice}>
-                        <Text style={styles.price}>Rs826</Text>
-
-                        <TouchableOpacity style={styles.add}>
-                            <Text style={styles.addText}>ADD</Text>
-                            <Image style={styles.plus}
-                                source={require('../../Images/icons8-plus-48.png')} />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.previously}>
-                    <View style={styles.ordered}>
-                        <Text style={styles.bottomText}>Previously Ordered Items(1)</Text>
-                        <Image style={styles.up}
-                            source={require('../../Images/icons8-sort-down-25.png')} />
-                    </View>
-
-                    <View style={styles.bottomView}>
-                        <View style={styles.boxOne}>
-                            <View style={styles.first}>
-                                <Image style={styles.Veg}
+                        <View style={styles.buttonView}>
+                            <TouchableOpacity style={styles.buttonVeg}>
+                                <Image style={styles.veg}
                                     source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
-                                <TouchableOpacity style={styles.orange}>
-                                    <Text style={styles.orangeText}>Bestseller</Text>
+                                <Text style={styles.buttonText}>Veg</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.buttonNonveg}>
+                                <Image style={styles.veg}
+                                    source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIkrKbfwN91hLB3v0sx0C8AnGer2crLMOuA&usqp=CAU' }} />
+                                <Text style={styles.buttonText}>Non-veg</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.buttonBest}>
+                                <Text style={styles.buttonTextOthers}>Bestseller</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.buttons}>
+                                <Text style={styles.buttonTextOthers}>Rating 4.0+</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.buttonLunch}>
+                                <Text style={styles.buttonTextOthers}>Lunch</Text>
+                            </TouchableOpacity>
+                        </View>
+
+
+                        <View style={styles.itemView}>
+                            <Text style={styles.order}>Your Previous order</Text>
+
+                            <View style={styles.previousOrders}>
+                                <View style={styles.firstrow}>
+                                    <Image style={styles.wrap}
+                                        source={{ uri: "https://b.zmtcdn.com/data/dish_photos/050/f828d299c85374c6374c676c37b21050.png?output-format=webp&fit=around|130:130&crop=130:130;*,*" }} />
+                                    <Image style={styles.vegAb}
+                                        source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIkrKbfwN91hLB3v0sx0C8AnGer2crLMOuA&usqp=CAU' }} />
+
+
+                                    <View style={styles.info}>
+                                        <Text style={styles.title}>2 x
+                                            <Text style={styles.inner}> Big Spicy Chicken Wrap</Text>
+                                        </Text>
+                                        <Text style={styles.cheese}>Add Cheese</Text>
+                                    </View>
+                                </View>
+
+                                <View style={styles.firstrow}>
+                                    <Image style={styles.wrap}
+                                        source={{ uri: "https://b.zmtcdn.com/data/dish_photos/901/802b82218c9aef28be50dcd6d5213901.png?output-format=webp&fit=around|130:130&crop=130:130;*,*" }} />
+                                    <Image style={styles.vegAb}
+                                        source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
+
+                                    <View style={styles.info}>
+                                        <Text style={styles.title}>1 x
+                                            <Text style={styles.inner}> Big Spicy Paneer Wrap</Text>
+                                        </Text>
+                                        <Text style={styles.cheese}>Add Cheese</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <TouchableOpacity style={styles.moreitems}>
+                                <Text style={styles.more}>+ 1 more items(s)</Text>
+                                <Image style={styles.down}
+                                    source={require('../../Images/icons8-more-than-49.png')} />
+                            </TouchableOpacity>
+
+                            <View style={styles.addPrice}>
+                                <Text style={styles.price}>Rs826</Text>
+
+                                <TouchableOpacity style={styles.add}>
+                                    <Text style={styles.addText}>ADD</Text>
+                                    <Image style={styles.plus}
+                                        source={require('../../Images/icons8-plus-48.png')} />
                                 </TouchableOpacity>
                             </View>
-                            <Text style={styles.Fries}>Large Fries</Text>
-                            <View style={styles.second}>
-                                <Image style={styles.stars}
-                                    source={{ uri: 'https://static.vecteezy.com/system/resources/thumbnails/011/732/718/small/funny-cute-happy-4-star-characters-bundle-set-hand-drawn-doodle-style-cartoon-character-illustration-icon-design-isolated-on-white-background-cute-five-four-mascot-character-collection-vector.jpg' }} />
-                                <Text style={styles.number}>595 reviews</Text>
-                                {/* <Text style={styles.amount}>Rs114</Text> */}
-                            </View>
-                            <Text style={styles.amount}>Rs114</Text>
+                        </View>
+                    </View>
 
-                            <View style={styles.Description}>
-                                <Text style={styles.productDetail}>World Famous French Fries.These</Text>
-                                <Text style={styles.productDetail}>epics fan-favourite ..read more</Text>
-                            </View>
+
+
+
+                    <View style={styles.previously}>
+                        <View style={styles.ordered}>
+                            <Text style={styles.bottomText}>Previously Ordered Items(1)</Text>
+                            <Image style={styles.up}
+                                source={require('../../Images/icons8-sort-down-25.png')} />
                         </View>
 
-                        <View style={styles.boxTwo}>
-                            <Image style={styles.frenchFries}
-                                source={{ uri: 'https://b.zmtcdn.com/data/dish_photos/2b8/74b54ec1c4778732325b186d4f3e22b8.png?output-format=webp&fit=around|130:130&crop=130:130;*,*' }} />
+                        <View style={styles.bottomView}>
+                            <View style={styles.boxOne}>
+                                <View style={styles.first}>
+                                    <Image style={styles.Veg}
+                                        source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
+                                    <TouchableOpacity style={styles.orange}>
+                                        <Text style={styles.orangeText}>Bestseller</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <Text style={styles.Fries}>Large Fries</Text>
+                                <View style={styles.second}>
+                                    <Image style={styles.stars}
+                                        source={{ uri: 'https://static.vecteezy.com/system/resources/thumbnails/011/732/718/small/funny-cute-happy-4-star-characters-bundle-set-hand-drawn-doodle-style-cartoon-character-illustration-icon-design-isolated-on-white-background-cute-five-four-mascot-character-collection-vector.jpg' }} />
+                                    <Text style={styles.number}>595 reviews</Text>
+                                    
+                                </View>
+                                <Text style={styles.amount}>Rs114</Text>
+
+                                <View style={styles.Description}>
+                                    <Text style={styles.productDetail}>World Famous French Fries.These</Text>
+                                    <Text style={styles.productDetail}>epics fan-favourite ..read more</Text>
+                                </View>
+                            </View>
+
+                            <View style={styles.boxTwo}>
+                                <Image style={styles.frenchFries}
+                                    source={{ uri: 'https://b.zmtcdn.com/data/dish_photos/2b8/74b54ec1c4778732325b186d4f3e22b8.png?output-format=webp&fit=around|130:130&crop=130:130;*,*' }} />
+                            </View>
+
+
                         </View>
+
+                        <TouchableOpacity style={styles.addBottom}>
+                            <Text style={styles.addText}>ADD</Text>
+                            <Image style={styles.plusAdd}
+                                source={require('../../Images/icons8-plus-48.png')} />
+                        </TouchableOpacity>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TouchableOpacity style={styles.heart}>
+                                <Image style={styles.share}
+                                    source={require('../../Images/icons8-heart-upside-down-24.png')} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.heart}>
+                                <Image style={styles.share}
+                                    source={require('../../Images/icons8-share-24.png')} />
+                            </TouchableOpacity>
+
+                        </View>
+
 
 
                     </View>
-                    <TouchableOpacity style={styles.addBottom}>
-                        <Text style={styles.addText}>ADD</Text>
-                        <Image style={styles.plusAdd}
-                            source={require('../../Images/icons8-plus-48.png')} />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.shareIcon}>
-                    <Image style={styles.share}
-                        source={require('../../Images/icons8-share-24.png')} />
-                    </TouchableOpacity>
-                    
-                    <TouchableOpacity style={styles.heart}>
-                    <Image style={styles.share}
-                        source={require('../../Images/icons8-heart-upside-down-24.png')} />
-                    </TouchableOpacity>
-                    
-                </View>
+                    <View style={{ height: 15, backgroundColor: 'white' }} />
 
 
 
 
-            </ScrollView>
+
+
+
+                </ScrollView>
+            </View>
+            <TouchableOpacity style={styles.MenuButton}>
+                <Image style={styles.menuBook}
+                    source={require('../../Images/icons8-restaurant-menu-48.png')} />
+                <Text style={styles.menuText}>Menu</Text>
+            </TouchableOpacity>
         </SafeAreaView >
     )
 }
@@ -219,26 +242,34 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: ('rgb(244,246,250)'),
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        
+
     },
     top: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        padding: 2
+        
+
     },
     arrow: {
-        height:23,
+        height: 23,
         width: 30,
-        marginTop:10,
-        marginLeft:6,
+        marginTop: 10,
+        marginLeft: 6,
     },
     search: {
         height: 25,
         width: 20,
     },
     menu: {
+
         flexDirection: 'row',
         width: 130,
         height: 40,
         padding: 9,
+        borderColor:'grey',
+        borderWidth: 0.2,
         borderRadius: 20,
         backgroundColor: 'white',
         marginLeft: 165,
@@ -251,19 +282,20 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         padding: 7,
+        borderColor:'grey',
+        borderWidth: 0.2,
         borderRadius: 20,
-        marginLeft:10,
+        marginLeft: 10,
     },
+    // mainView:{
+    //    height:'100%'
+    // },
     Scrol: {
-        marginTop: 15,
+        margin: 10,
     },
     Display: {
         backgroundColor: 'white',
-        height: "26%",
-        width: "92%",
-        marginLeft: 15,
-        borderRadius: 20,
-        marginTop:5
+        borderRadius: 20, 
     },
     AddressBar: {
         flexDirection: 'row'
@@ -292,12 +324,13 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
     fourthView: {
+
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: 230,
         marginTop: 10,
         marginLeft: 9,
-        
+
     },
 
     stopwatch: {
@@ -330,9 +363,9 @@ const styles = StyleSheet.create({
         marginLeft: 2
     },
     AddScrol: {
-        
+
         padding: 12,
-       
+
     },
     OfferRed: {
         height: 68,
@@ -347,7 +380,7 @@ const styles = StyleSheet.create({
     },
     greenButton: {
         position: 'absolute',
-        right:10,
+        right: 10,
         top: 15,
     },
     rating: {
@@ -377,7 +410,7 @@ const styles = StyleSheet.create({
     },
     revText: {
         fontSize: 13,
-        fontWeight:'600',
+        fontWeight: '600',
         textAlign: 'center'
     },
     head: {
@@ -389,7 +422,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         marginTop: 20,
-        marginHorizontal: 10
+
     },
     buttonVeg: {
         flexDirection: 'row',
@@ -448,13 +481,12 @@ const styles = StyleSheet.create({
     veg: {
         height: 16,
         width: 16,
-        borderRadius:4
+        borderRadius: 4
     },
     itemView: {
+
         backgroundColor: 'white',
-        height: "34%",
-        width: "92%",
-        marginLeft: 16,
+
         borderRadius: 20,
         marginTop: 15
     },
@@ -476,12 +508,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10
     },
-    vegAb:{
-        position:'absolute',
-        height:11,
-        width:11,
-        left:35,
-        top:5
+    vegAb: {
+        position: 'absolute',
+        height: 11,
+        width: 11,
+        left: 35,
+        top: 5
     },
     firstrow: {
         flexDirection: 'row',
@@ -495,7 +527,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: 'grey',
-        fontSize:14
+        fontSize: 14
     },
     inner: {
         color: 'black',
@@ -505,14 +537,13 @@ const styles = StyleSheet.create({
     },
     cheese: {
         color: 'grey',
-        fontWeight:'600',
+        fontWeight: '600',
         fontSize: 11,
         marginTop: 3
     },
     moreitems: {
         flexDirection: 'row',
-        marginLeft: 10,
-        width: "95%",
+        marginHorizontal: 10,
         marginTop: 10,
         padding: 10,
         borderColor: 'grey',
@@ -530,24 +561,25 @@ const styles = StyleSheet.create({
     addPrice: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: 13
+        marginHorizontal: 13,
+        paddingVertical: 15
     },
     price: {
         fontSize: 18,
-        marginTop: 26,
+        marginTop: 5,
         fontWeight: 'bold'
     },
     add: {
         flexDirection: 'row',
         backgroundColor: ('rgb(253,246,247)'),
         paddingVertical: 6,
-        paddingHorizontal:20,
-        height: 35,
+        paddingHorizontal:21,
+        height: 34,
         width: 90,
         borderColor: 'red',
         borderWidth: 1,
         borderRadius: 10,
-        marginTop:21,
+
     },
     addText: {
         fontSize: 16,
@@ -558,13 +590,14 @@ const styles = StyleSheet.create({
     plus: {
         height: 9,
         width: 20,
-        marginLeft: 11
+        marginLeft:8
     },
     previously: {
-        height: '40%',
-        width: '100%',
+
         backgroundColor: 'white',
         marginTop: 20,
+
+
     },
     ordered: {
         flexDirection: 'row',
@@ -572,7 +605,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderColor: 'red',
         borderLeftWidth: 3,
-        marginHorizontal:10,
+        marginHorizontal: 10,
         padding: 5,
         marginTop: 20,
     },
@@ -614,7 +647,6 @@ const styles = StyleSheet.create({
     },
     Fries: {
         fontSize: 20,
-        //marginLeft: 10,
         marginTop: 10,
         fontWeight: '600'
     },
@@ -622,7 +654,7 @@ const styles = StyleSheet.create({
         height: 25,
         width: 80,
         borderColor: ('rgb(251,234,185)'),
-        borderRadius:5,
+        borderRadius: 5,
         borderWidth: 2
     },
     second: {
@@ -654,10 +686,12 @@ const styles = StyleSheet.create({
         borderColor: 'grey',
         borderWidth: 1,
         borderRadius: 15,
-        marginTop: 30
+        marginTop: 30,
+
     },
     frenchFries: {
-        height: 180,
+        marginVertical: 18,
+        height: 150,
         width: 140
     },
     addBottom: {
@@ -672,40 +706,57 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         right: 25,
-        bottom:35,
+        bottom: 5,
     },
     plusAdd: {
         height: 9,
         width: 20,
         marginLeft: 18
     },
-    share:{
-        height:23,
-        width:23
+    share: {
+        height: 21,
+        width: 21
     },
-    shareIcon:{
-        width:35,
-        height:35,
-        backgroundColor:'white',
-        padding:5,
-        borderRadius:20,
-        borderColor:'grey',
-        borderWidth:0.5,
-        position:'absolute',
-        bottom:30,
-        left:75
+    shareIcon: {
+        width: 30,
+        height: 30,
+        backgroundColor: 'white',
+        padding: 4,
+        borderRadius: 18,
+        borderColor: 'grey',
+        borderWidth: 0.5,
     },
-    heart:{
-        width:35,
-        height:35,
-        backgroundColor:'white',
-        padding:5,
-        borderRadius:20,
-        borderColor:'grey',
-        borderWidth:0.5,
-        position:'absolute',
-        bottom:30,
-        left:20
+    heart: {
+        width: 30,
+        height: 30,
+        backgroundColor: 'white',
+        padding: 4,
+        borderRadius: 18,
+        borderColor: 'grey',
+        borderWidth: 0.5,
+        marginHorizontal: 8
+        
+    },
+    MenuButton: {
+        flexDirection: 'row',
+        padding: 9,
+        borderWidth: 2,
+        alignSelf: 'center',
+        borderRadius: 10,
+        backgroundColor: 'black',
+        position: 'absolute',
+        bottom:25
+    },
+    menuText: {
+        color: 'white',
+        fontWeight: '700',
+        marginLeft:10,
+        marginTop:7
+    },
+    menuBook: {
+        height: 30,
+        width: 30,
+
     },
 
 

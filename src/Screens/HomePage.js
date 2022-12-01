@@ -48,8 +48,9 @@ class HomePage extends Component {
               source={require('../../Images/icons8-microphone-24.png')} />
           </View>
         </View>
-        <ScrollView style={styles.scrol}>
+        <ScrollView style={styles.scrol} showsVerticalScrollIndicator={false}>
           <View style={styles.buttons}>
+
             <TouchableOpacity style={styles.types}>
               <Image style={styles.slider}
                 source={require('../../Images/icons8-slider-24.png')} />
@@ -92,7 +93,7 @@ class HomePage extends Component {
 
           <FlatList
             data={show.data}
-            numColumns={2}
+            numColumns={3}
             renderItem={({ item }) => {
               const { description } = item
               return (
@@ -117,7 +118,12 @@ class HomePage extends Component {
               )
             }} />
 
-          <Text style={styles.restText}>Because you Deserve This!</Text>
+          <View style={styles.raising}>
+            <Text style={styles.restText}>Because you Deserve This!</Text>
+            <Image style={styles.hands}
+              source={require('../../Images/icons8-raising-hands-49.png')} />
+          </View>
+
           <Image style={styles.center}
             source={{ uri: 'https://b.zmtcdn.com/data/pictures/chains/2/53922/acf82ffdb2549ecdcbd12aca5a39c0c4_featured_v2.jpg?output-format=webp' }} />
 
@@ -131,7 +137,7 @@ class HomePage extends Component {
               source={require('../../Images/icons8-star-64.png')} />
             <View style={styles.bottonDetail}>
               <Text style={styles.MomsKitchen}>Mom's Kitchen</Text>
-              <Text style={styles.rate}>How would you rate your experience</Text>
+              <Text style={styles.rate}>How would you rate your experience?</Text>
             </View>
 
             <Text style={styles.redText}>Rate</Text>
@@ -139,10 +145,6 @@ class HomePage extends Component {
               source={require('../../Images/icons8-cancel-32.png')} />
           </BlurView>
 
-
-
-
-          {/* </View> */}
         </ScrollView>
       </SafeAreaView>
     )
@@ -200,12 +202,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 5,
   },
-  down:{
-    position:'absolute',
-    height:6,
-    width:20,
-    left:40,
-    top:7
+  down: {
+    position: 'absolute',
+    height: 6,
+    width: 20,
+    left: 40,
+    top: 7
   },
   inputView: {
     marginTop: 15,
@@ -215,6 +217,8 @@ const styles = StyleSheet.create({
     width: 370,
     backgroundColor: ('rgb(245,245,245)'),
     borderRadius: 10,
+    borderColor: 'grey',
+    borderWidth: 0.2
   },
   search: {
     height: 28,
@@ -227,7 +231,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'red',
     marginLeft: 5,
-    width: 270
+    width: 270,
   },
   voice: {
     width: 55,
@@ -304,8 +308,8 @@ const styles = StyleSheet.create({
     marginTop: 7,
   },
   scrol: {
-    marginTop:10,
-   
+    marginTop: 10,
+
   },
   restaurants: {
     flexDirection: 'column',
@@ -328,6 +332,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 16,
   },
+  raising: {
+    flexDirection: 'row',
+   
+  },
+  hands: {
+    height: 30,
+    width: 30,
+    marginTop: 10,
+    marginLeft:3
+  },
+
   center: {
     height: 180,
     width: 362,
@@ -336,10 +351,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   flatView: {
-    // borderWidth: 1,
     flexDirection: 'row',
     backgroundColor: 'white',
-    // marginHorizontal: 12,
     width: '50%',
     paddingLeft: 18,
     paddingVertical: 10
@@ -416,7 +429,7 @@ const styles = StyleSheet.create({
   },
   rate: {
     fontSize: 11,
-     marginTop:3,
+    marginTop: 3,
     fontWeight: 'bold',
     color: 'grey'
   },
