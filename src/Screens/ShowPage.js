@@ -1,7 +1,49 @@
-import React, { useState } from "react";
-import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, TextInput, ScrollView } from "react-native";
+import React from "react";
+import { SafeAreaView, View, Text, Image, TouchableOpacity, StyleSheet, TextInput, ScrollView, Alert } from "react-native";
 
 const ShowPage = ({ route, navigation }) => {
+
+    const ButtonAlert = () =>
+        Alert.alert(
+            "Hey!",
+            "Choose your Pick",
+            [
+                {
+                    text: "Cancel",
+                    // onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "OK" }
+            ]
+        );
+
+    const ButtonAdd = () =>
+        Alert.alert(
+            "Hey!",
+            "Add your item",
+            [
+                {
+                    text: "Cancel",
+                    // onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "OK" }
+            ]
+        );
+    const ShowMenu=()=>
+    Alert.alert(
+        "Hey!",
+        "Go To The Menu",
+        [
+            {
+                text: "Cancel",
+                // onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            { text: "OK" }
+        ]
+    );
+
 
 
     const display = route.params.result
@@ -80,27 +122,32 @@ const ShowPage = ({ route, navigation }) => {
                         </View>
 
                         <View style={styles.buttonView}>
-                            <TouchableOpacity style={styles.buttonVeg}>
+                            <TouchableOpacity style={styles.buttonVeg}
+                                onPress={ButtonAlert}>
                                 <Image style={styles.veg}
                                     source={require('../../Images/icons8-vegetarian-food-symbol-48.png')} />
                                 <Text style={styles.buttonText}>Veg</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.buttonNonveg}>
+                            <TouchableOpacity style={styles.buttonNonveg}
+                                onPress={ButtonAlert}>
                                 <Image style={styles.veg}
                                     source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIkrKbfwN91hLB3v0sx0C8AnGer2crLMOuA&usqp=CAU' }} />
                                 <Text style={styles.buttonText}>Non-veg</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.buttonBest}>
+                            <TouchableOpacity style={styles.buttonBest}
+                                onPress={ButtonAlert}>
                                 <Text style={styles.buttonTextOthers}>Bestseller</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.buttons}>
+                            <TouchableOpacity style={styles.buttons}
+                                onPress={ButtonAlert}>
                                 <Text style={styles.buttonTextOthers}>Rating 4.0+</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.buttonLunch}>
+                            <TouchableOpacity style={styles.buttonLunch}
+                                onPress={ButtonAlert}>
                                 <Text style={styles.buttonTextOthers}>Lunch</Text>
                             </TouchableOpacity>
                         </View>
@@ -148,7 +195,8 @@ const ShowPage = ({ route, navigation }) => {
                             <View style={styles.addPrice}>
                                 <Text style={styles.price}>Rs826</Text>
 
-                                <TouchableOpacity style={styles.add}>
+                                <TouchableOpacity style={styles.add}
+                                    onPress={ButtonAdd}>
                                     <Text style={styles.addText}>ADD</Text>
                                     <Image style={styles.plus}
                                         source={require('../../Images/icons8-plus-48.png')} />
@@ -181,7 +229,7 @@ const ShowPage = ({ route, navigation }) => {
                                     <Image style={styles.stars}
                                         source={{ uri: 'https://static.vecteezy.com/system/resources/thumbnails/011/732/718/small/funny-cute-happy-4-star-characters-bundle-set-hand-drawn-doodle-style-cartoon-character-illustration-icon-design-isolated-on-white-background-cute-five-four-mascot-character-collection-vector.jpg' }} />
                                     <Text style={styles.number}>595 reviews</Text>
-                                    
+
                                 </View>
                                 <Text style={styles.amount}>Rs114</Text>
 
@@ -199,12 +247,13 @@ const ShowPage = ({ route, navigation }) => {
 
                         </View>
 
-                        <TouchableOpacity style={styles.addBottom}>
+                        <TouchableOpacity style={styles.addBottom}
+                        onPress={ButtonAdd}>
                             <Text style={styles.addText}>ADD</Text>
                             <Image style={styles.plusAdd}
                                 source={require('../../Images/icons8-plus-48.png')} />
                         </TouchableOpacity>
-                        <View style={{ flexDirection: 'row' }}>
+                        <View style={styles.shareView}>
                             <TouchableOpacity style={styles.heart}>
                                 <Image style={styles.share}
                                     source={require('../../Images/icons8-heart-upside-down-24.png')} />
@@ -219,7 +268,7 @@ const ShowPage = ({ route, navigation }) => {
 
 
                     </View>
-                    <View style={{ height: 15, backgroundColor: 'white' }} />
+                    {/* <View style={{ height: 35, backgroundColor: 'white' }} /> */}
 
 
 
@@ -229,7 +278,8 @@ const ShowPage = ({ route, navigation }) => {
 
                 </ScrollView>
             </View>
-            <TouchableOpacity style={styles.MenuButton}>
+            <TouchableOpacity style={styles.MenuButton}
+            onPress={ShowMenu}>
                 <Image style={styles.menuBook}
                     source={require('../../Images/icons8-restaurant-menu-48.png')} />
                 <Text style={styles.menuText}>Menu</Text>
@@ -243,13 +293,13 @@ const styles = StyleSheet.create({
         backgroundColor: ('rgb(244,246,250)'),
         flex: 1,
         flexDirection: 'column',
-        
+
 
     },
     top: {
         flexDirection: 'row',
         padding: 2
-        
+
 
     },
     arrow: {
@@ -268,7 +318,7 @@ const styles = StyleSheet.create({
         width: 130,
         height: 40,
         padding: 9,
-        borderColor:'grey',
+        borderColor: 'grey',
         borderWidth: 0.2,
         borderRadius: 20,
         backgroundColor: 'white',
@@ -282,20 +332,21 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         padding: 7,
-        borderColor:'grey',
+        borderColor: 'grey',
         borderWidth: 0.2,
         borderRadius: 20,
         marginLeft: 10,
     },
-    // mainView:{
-    //    height:'100%'
-    // },
+    mainView:{
+       marginBottom:20,
+    },
     Scrol: {
         margin: 10,
+        marginTop: 15
     },
     Display: {
         backgroundColor: 'white',
-        borderRadius: 20, 
+        borderRadius: 20,
     },
     AddressBar: {
         flexDirection: 'row'
@@ -303,7 +354,7 @@ const styles = StyleSheet.create({
     redSort: {
         height: 17,
         width: 17,
-        marginTop: 3
+        marginTop: 6
     },
     Title: {
         fontSize: 22,
@@ -313,24 +364,26 @@ const styles = StyleSheet.create({
     },
     course: {
         fontSize: 14,
-        color: 'grey',
-        marginTop: 5,
+        color: 'black',
+        fontWeight: '500',
+        marginTop: 4,
         marginLeft: 15
     },
     adText: {
         fontSize: 14,
+        fontWeight: '400',
         color: 'grey',
-        marginTop: 2,
+        marginTop: 7,
         marginLeft: 15
     },
     fourthView: {
 
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: 230,
+        width: 210,
         marginTop: 10,
         marginLeft: 9,
-
+        // backgroundColor:'yellow'
     },
 
     stopwatch: {
@@ -345,27 +398,23 @@ const styles = StyleSheet.create({
     deliveryTime: {
         fontSize: 13,
         marginLeft: 2,
-        fontWeight: 'bold',
-        color: 'grey'
+        fontWeight: '600',
+        color: 'black'
     },
     dist: {
-        borderColor: 'grey',
+        borderColor: 'black',
         borderLeftWidth: 0.2,
         height: 20,
-        width: 120,
+        width: 110,
         paddingVertical: 2,
-        paddingHorizontal: 14,
-
     },
     distText: {
-        color: 'grey',
-        fontWeight: 'bold',
-        marginLeft: 2
+        color: 'black',
+        fontWeight: '600',
+        marginLeft: 8
     },
     AddScrol: {
-
         padding: 12,
-
     },
     OfferRed: {
         height: 68,
@@ -573,7 +622,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: ('rgb(253,246,247)'),
         paddingVertical: 6,
-        paddingHorizontal:21,
+        paddingHorizontal: 21,
         height: 34,
         width: 90,
         borderColor: 'red',
@@ -590,12 +639,12 @@ const styles = StyleSheet.create({
     plus: {
         height: 9,
         width: 20,
-        marginLeft:8
+        marginLeft: 8
     },
     previously: {
 
         backgroundColor: 'white',
-        marginTop: 20,
+        marginTop: 10,
 
 
     },
@@ -620,7 +669,8 @@ const styles = StyleSheet.create({
     },
     bottomView: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        
     },
     first: {
         flexDirection: 'row',
@@ -717,6 +767,10 @@ const styles = StyleSheet.create({
         height: 21,
         width: 21
     },
+    shareView:{
+        flexDirection:'row',
+        marginHorizontal:15
+    },
     shareIcon: {
         width: 30,
         height: 30,
@@ -735,7 +789,7 @@ const styles = StyleSheet.create({
         borderColor: 'grey',
         borderWidth: 0.5,
         marginHorizontal: 8
-        
+
     },
     MenuButton: {
         flexDirection: 'row',
@@ -745,13 +799,13 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'black',
         position: 'absolute',
-        bottom:25
+        bottom: 25
     },
     menuText: {
         color: 'white',
         fontWeight: '700',
-        marginLeft:10,
-        marginTop:7
+        marginLeft: 10,
+        marginTop: 7
     },
     menuBook: {
         height: 30,

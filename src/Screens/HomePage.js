@@ -1,10 +1,36 @@
 import React, { Component } from "react";
-import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, ScrollView, FlatList } from "react-native";
+import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, ScrollView, FlatList,Alert } from "react-native";
 import { BlurView } from "@react-native-community/blur";
 import SecondScreen from "./SecondScreen";
 import { showData } from "../Redux/Actions/Action";
 import { connect } from "react-redux";
 
+const ButtonAlert = () =>
+    Alert.alert(
+        "Hey!",
+        "Choose your Pick",
+        [
+            {
+                text: "Cancel",
+               // onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            { text: "OK" }
+        ]
+    );
+    const LangAlert = () =>
+    Alert.alert(
+        "Hi!",
+        "Choose your Language",
+        [
+            {
+                text: "Cancel",
+               // onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            { text: "OK" }
+        ]
+    );
 
 class HomePage extends Component {
   componentDidMount() {
@@ -26,12 +52,14 @@ class HomePage extends Component {
             <Image style={styles.down}
               source={require('../../Images/icons8-more-than-49.png')} />
           </View>
-          <View style={styles.language}>
+          
+          <TouchableOpacity style={styles.language}
+          onPress={LangAlert}>
             <Image style={styles.langBar}
               source={require('../../Images/languageBar.png')} />
             <Image style={styles.profile}
               source={require('../../Images/ProfilePic.jpg')} />
-          </View>
+          </TouchableOpacity>
         </View>
 
 
@@ -51,27 +79,33 @@ class HomePage extends Component {
         <ScrollView style={styles.scrol} showsVerticalScrollIndicator={false}>
           <View style={styles.buttons}>
 
-            <TouchableOpacity style={styles.types}>
+            <TouchableOpacity style={styles.types}
+            onPress={ButtonAlert}>
               <Image style={styles.slider}
                 source={require('../../Images/icons8-slider-24.png')} />
               <Text style={styles.buttonText}>Sort</Text>
               <Image style={styles.sort}
                 source={require('../../Images/icons8-sort-down-30.png')} />
             </TouchableOpacity>
+            
 
-            <TouchableOpacity style={styles.Pro}>
+            <TouchableOpacity style={styles.Pro}
+            onPress={ButtonAlert}>
               <Text style={styles.buttonTextOthers}>Pro</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.typesOther}>
+            <TouchableOpacity style={styles.typesOther}
+            onPress={ButtonAlert}>
               <Text style={styles.buttonTextOthers}>Fast Delivery</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.typesOther}>
+            <TouchableOpacity style={styles.typesOther}
+            onPress={ButtonAlert}>
               <Text style={styles.buttonTextOthers}>Great Offers</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.typesOther}>
+            <TouchableOpacity style={styles.typesOther}
+            onPress={ButtonAlert}>
               <Text style={styles.buttonTextOthers}>Rating 4.0+</Text>
             </TouchableOpacity>
           </View>
